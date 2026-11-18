@@ -6,12 +6,19 @@
 - Press E to proceed further to scenes
 - Press R to restart 
 
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](<Screenshot 2026-11-18 203001.png>)
-![alt text](<Screenshot 2026-11-18 202901.png>)
+<img width="1917" height="902" alt="Screenshot 2026-11-18 203133" src="https://github.com/user-attachments/assets/34114f45-3d9b-4870-9858-a22cca2e4a55" />
 
-![alt text](image.png)
+<img width="1912" height="897" alt="Screenshot 2026-11-18 203224" src="https://github.com/user-attachments/assets/6fb967ca-b1d6-45de-8905-34d7e627db23" />
+
+<img width="1916" height="906" alt="Screenshot 2026-11-18 202901" src="https://github.com/user-attachments/assets/f237ae03-1381-4ec2-84d5-03594f3181a9" />
+
+<img width="1917" height="913" alt="Screenshot 2026-11-18 203001" src="https://github.com/user-attachments/assets/98a7a6f5-2268-4992-a5cc-e28e12348257" />
+
+<img width="1117" height="866" alt="Screenshot 2026-11-18 203016" src="https://github.com/user-attachments/assets/5399846f-cdb4-4304-b99d-a79c5bae9612" />
+
+
+
+
 
 
 

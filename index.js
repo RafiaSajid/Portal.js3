@@ -5,11 +5,9 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
-/* ============================================================
-   CONFIG  - put your downloaded GLB files here
-   ============================================================ */
+
 const CONFIG = {
-  // Rapunzel's tower (download the GLB from Sketchfab and put it next to index.html)
+  // Rapunzel's tower 
   TOWER_MODEL_URL: './tower/rapunzels_tower_-_lowpoly.glb',
   TOWER_ROTATION_Y: 0,          // rotate the tower around its vertical axis (radians)
   TOWER_HEIGHT: 14,             // the model is scaled to this height (world units)
@@ -25,9 +23,6 @@ const CONFIG = {
   BOAT_LENGTH: 5.5              // longest horizontal size of the boat in world units
 };
 
-/* ============================================================
-   HELPERS
-   ============================================================ */
 const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
 const clamp = THREE.MathUtils.clamp;
 const smooth = (a, b, x) => {
@@ -153,9 +148,6 @@ function fitModel(object, { height = null, length = null, rotationY = 0, baseY =
   return holder;
 }
 
-/* ============================================================
-   RENDERER
-   ============================================================ */
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -167,9 +159,6 @@ document.body.style.background = '#05060c';
 document.body.appendChild(renderer.domElement);
 renderer.domElement.style.display = 'block';
 
-/* ============================================================
-   STAGES (each stage = a scene + a camera + orbit controls)
-   ============================================================ */
 function makeStage({ fov = 60, start, startTarget, orbit = {} }) {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -191,9 +180,6 @@ function makeStage({ fov = 60, start, startTarget, orbit = {} }) {
   };
 }
 
-/* ============================================================
-   PORTAL (frame + plane that shows another stage)
-   ============================================================ */
 const portalMaterials = [];
 
 const PORTAL_VERT = `
@@ -278,9 +264,6 @@ function animateChain(stage, t, dt, seen = new Set()) {
   if (stage.portal) animateChain(stage.portal.target, t, dt, seen);
 }
 
-/* ============================================================
-   STAGE 4: VOXEL CASTLE ISLAND (the reference picture)
-   ============================================================ */
 function buildCastle() {
   const stage = makeStage({
     fov: 55, start: V3(13, 11, 14), startTarget: V3(0, 3, 0),
@@ -504,9 +487,6 @@ function buildCastle() {
   return stage;
 }
 
-/* ============================================================
-   STAGE 3: NIGHT LAKE with boat, lanterns + spotlights
-   ============================================================ */
 function buildLake(castle) {
   const stage = makeStage({
     fov: 50, start: V3(2.5, 2.4, 8.5), startTarget: V3(0, 1.6, -1),
@@ -741,9 +721,6 @@ function buildLake(castle) {
   return stage;
 }
 
-/* ============================================================
-   STAGE 2: ROOM AT THE TOP OF THE TOWER (with the first portal)
-   ============================================================ */
 function buildRoom(lake) {
   const stage = makeStage({
     fov: 65, start: V3(0, 1.65, 2.9), startTarget: V3(0, 1.7, 0),
@@ -916,9 +893,6 @@ function buildRoom(lake) {
   return stage;
 }
 
-/* ============================================================
-   STAGE 1: DAYTIME WORLD (tower, hills, trees, mountains, sky)
-   ============================================================ */
 function terrainHeight(x, z) {
   const d = Math.hypot(x, z);
   const flat = smooth(12, 40, d);
@@ -1124,9 +1098,6 @@ function buildWorld(room) {
   return stage;
 }
 
-/* ============================================================
-   BUILD ALL STAGES (order matters: portals point to later scenes)
-   ============================================================ */
 const castle = buildCastle();
 const lake = buildLake(castle);
 const room = buildRoom(lake);
@@ -1146,9 +1117,6 @@ try {
   console.warn('Environment lighting skipped:', err);
 }
 
-/* ============================================================
-   HUD + SCREEN FLASH
-   ============================================================ */
 const hud = document.createElement('div');
 hud.style.cssText =
   'position:fixed;left:0;right:0;bottom:22px;display:flex;flex-direction:column;align-items:center;gap:8px;' +
@@ -1174,9 +1142,6 @@ function setStatus(text, isError = false) {
   statusEl.style.color = isError ? '#ff9a9a' : '#cfe9ff';
 }
 
-/* ============================================================
-   FLIGHTS / TRANSITIONS
-   ============================================================ */
 const clock = new THREE.Clock();
 let state = 'idle'; // 'idle' | 'flying' | 'fading'
 let flight = null;
@@ -1389,10 +1354,7 @@ async function loadAssets() {
   if (problems.length) setStatus(problems.join('  |  ') + '  (showing simple stand-ins)', true);
   else setStatus('');
 }
-
-/* ============================================================
-   ANIMATION LOOP
-   ============================================================ */
+//anim loop
 let lastT = 0;
 function animate() {
   requestAnimationFrame(animate);

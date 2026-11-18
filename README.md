@@ -1,8 +1,17 @@
 # Portal Three.js
+# Controls:
+- Drag to orbit
+- Scroll to zoom
+- Click to proceed to the scene 1(Portal 1)
+- Press E to proceed further to scenes
+- Press R to restart 
 
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](<Screenshot 2026-11-18 203001.png>)
+![alt text](<Screenshot 2026-11-18 202901.png>)
 
-
-
+![alt text](image.png)
 
 
 
